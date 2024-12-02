@@ -1,0 +1,32 @@
+Class Relationships
+AdventureGameMap
+
+Contains multiple Node objects.
+Interacts with the Player object.
+Node
+
+Contains a Monster object (optional, as not every node has a monster).
+Player
+
+Can attack Monster objects.
+Interacts with AdventureGameMap.
+Monster
+
+Can attack the Player.
+Class Diagram Description
+AdventureGameMap:
+
+Attributes: locations (vector of Node), currentLevel (int)
+Methods: buildMapNodes(), displayCurrentLevel(const Player&), movePlayer(), isMonsterPresent(), getCurrentMonster(), removeCurrentMonster(), isGameWon(), getCurrentItem(), GetLocations()
+Node:
+
+Attributes: id (int), name (string), description (string), monster (Monster*), connections (vector of Node*)
+Methods: hasMonster() const, getMonster(), removeMonster(), AddConnection(Node*), getDescription() const
+Player:
+
+Attributes: name (string), health (int), baseAttackDamage (int), attackDamage (int), defense (int), inventory (vector of string)
+Methods: takeItem(const string&), useItem(const string&), dropItem(const string&), attack(Monster&), displayInventory(), getHealth() const, getHealthRef(), getAttackDamage() const, getDefense() const
+Monster:
+
+Attributes: name (string), health (int), attackDamage (int)
+Methods: isDefeated(), takeDamage(int), attackPlayer(int&, int), getName() const, getHealth() const, getAttackDamage() const
